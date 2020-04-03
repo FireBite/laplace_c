@@ -1,6 +1,5 @@
 # laplace_c
-Quick and dirty program that calculates square matrix det using Laplace method  
-Currently segfaults for sizes >= 4 :))
+Quick and dirty program that calculates square matrix det using Laplace method
 
 ## Usage
 from STDIN:
