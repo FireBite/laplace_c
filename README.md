@@ -20,7 +20,14 @@ Calculate 3x3 matrix:
 1 8 5
 4 5 6
 ```
-Calculate 4x4 matrix using m4 file:
+Calculate 4x4 matrix using example m4 file:
 ```
 ./laplace < m4
 ```
+
+Available examples:
+
+* `./m2` - 2x2 matrix
+* `./m3` - 3x3 matrix
+* `./m4` - 4x4 matrix
+* `./m6` - 6x6 matrix
