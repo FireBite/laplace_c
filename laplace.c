@@ -33,9 +33,9 @@ int calc_laplace(int **matrix, int size){
 	//Divide and calculate det using laplace
 	for(int i = 0; i < size; i++){	
 		//Alloc new smaller matrix
-		int **new_matrix = malloc((size-1) * sizeof(int));
+		int **new_matrix = (int**) malloc((size-1) * (size-1) * sizeof(int));
 		for(int n = 0; n < size-1; n++){
-			new_matrix[n] = malloc((size-1) * sizeof(int));
+			new_matrix[n] = (int*) malloc((size-1) * sizeof(int));
 		}
 		
 		int populated = 0;
@@ -78,6 +78,12 @@ int calc_laplace(int **matrix, int size){
 		call_n++;
 		printf("|RCSV|\n");
 		det += calc_laplace(new_matrix, size-1) * scalar;
+		
+		//Free memory
+		for(int n = 0; n < size-1; n++){
+			free(new_matrix[n]);
+		}
+		free(new_matrix);
 	}
 	
 	//Exit and return calculated det
@@ -91,12 +97,12 @@ int main()
 	int size;
 	scanf("%d", &size);
 	
-	int** matrix = malloc(size * sizeof(int));
+	int** matrix = (int**) malloc(size * size * sizeof(int));
 	int el = 0;
 	
 	// Scan matrix into memory
 	for(int i = 0; i < size; i++){
-		matrix[i] = malloc(size * sizeof(int));
+		matrix[i] = (int*) malloc(size * sizeof(int));
 		
 		for(int n = 0; n < size; n++){
 			scanf("%d", &el);
@@ -120,6 +126,12 @@ int main()
 	}
 	
 	printf("\n~~~~| DET: %d |~~~~\n", det);
+	
+	//Free memory
+	for(int n = 0; n < size; n++){
+		free(matrix[n]);
+	}
+	free(matrix);
 	
 	return 0;
 }
